@@ -29,6 +29,18 @@ module.exports = function(grunt) {
       }
     },
 
+    concat: {
+      options: {
+        separator: '//\n'
+      },
+      client_and_lib: {
+        files: {
+          'public/dist/build.js': ['public/client/app.js', 'public/client/link.js', 'public/client/links.js', 'public/client/linkView.js', 'public/client/linksView.js', 'public/client/createLinkView.js', 'public/client/router.js'],
+          'public/dist/lib.js': ['public/lib/jquery.js', 'public/lib/underscore.js', 'public/lib/backbone.js', 'public/lib/handlebars.js']
+        }
+      }
+    },
+
     uglify: {
     },
 
@@ -99,8 +111,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
-    'gitpush'
+    'concat'
   ]);
-
 
 };
